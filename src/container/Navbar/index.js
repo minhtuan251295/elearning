@@ -18,6 +18,12 @@ class Navbar extends Component {
       user
     })
   }
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps !== this.props && !_.isEmpty(this.state.user)) {
+      return false
+    }
+    return true
+  }
 
   logOut = () => {
     localStorage.removeItem("CurrentUser");

@@ -15,13 +15,14 @@ import Register from './components/Register';
 import SignIn from './components/SignIn';
 import axios from 'axios';
 
+
+
 const initialState = {};
 const middleware = [thunk];
 /* Create Store */
 const composeEnhancers = composeWithDevTools({
   // Specify name here, actionsBlacklist, actionsCreators and other options if needed
 })
-
 
 const store = createStore(
   rootReducer,
@@ -46,7 +47,6 @@ ReactDOM.render(
         <Route path="/register" exact component={Register} />
         <Route path="/sign-in" exact component={SignIn} />
         <Route path="/" exact component={App} />
-
       </Switch>
     </BrowserRouter>
   </Provider>

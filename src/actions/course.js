@@ -38,3 +38,34 @@ export const getCourseDetail = (maKhoaHoc, callback) => {
       .catch(err => console.log(err));
   }
 }
+
+export const getCategories = (callback) => {
+  return (dispatch) => {
+    axios
+      .get("http://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayDanhMucKhoaHoc")
+      .then(res => {
+        dispatch({
+          type: Types.GET_CATEGORIES_COURSE,
+          payload: res.data
+        })
+        if (callback) callback(res.data);
+      })
+      .catch(err => console.log(err))
+  }
+}
+
+export const getCoursesFromCategory = (categoryId, callback) => {
+  return (dispatch) => {
+    axios
+      .get("http://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayKhoaHocTheoDanhMuc", {
+        params: {
+          maDanhMuc: categoryId,
+          MaNhom: 'GP01'
+        }
+      })
+      .then(res => {
+        if (callback) callback(res.data)
+      })
+      .catch(err => console.log(err))
+  }
+}
