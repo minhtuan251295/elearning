@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import * as actions from "./actions/course";
 import CourseList from './container/CourseList';
+import Navbar from './container/Navbar';
 
 class App extends React.Component {
 
@@ -11,11 +12,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <CourseList />
+      <>
+        <Navbar />
+        <CourseList />
+      </>
     );
   }
 }
-
-
 
 export default connect(null, actions)(App);

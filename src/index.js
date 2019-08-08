@@ -11,6 +11,9 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import CourseDetail from './components/CourseDetail';
+import Register from './components/Register';
+import SignIn from './components/SignIn';
+import axios from 'axios';
 
 const initialState = {};
 const middleware = [thunk];
@@ -29,12 +32,21 @@ const store = createStore(
     composeEnhancers()
   )
 )
+const value = localStorage.getItem("CurrentUser");
+if (value) {
+  const currentUser = JSON.parse(value);
+  axios.defaults.headers.common['Authorization'] = "Bearer " + currentUser.accessToken;
+}
+
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <Switch>
         <Route path="/course/:courseId" exact component={CourseDetail} />
+        <Route path="/register" exact component={Register} />
+        <Route path="/sign-in" exact component={SignIn} />
         <Route path="/" exact component={App} />
+
       </Switch>
     </BrowserRouter>
   </Provider>
