@@ -29,7 +29,9 @@ class Navbar extends Component {
     localStorage.removeItem("CurrentUser");
     this.props.history.push("/sign-in");
   }
-
+  goToUserDetail = () => {
+    this.props.history.push("/user-detail");
+  }
   render() {
     return (
       <div>
@@ -63,6 +65,8 @@ class Navbar extends Component {
                           <i className="fa fa-user"></i>
                         </button>
                         <div className="dropdown-menu">
+                          <button className="btn btn-info" onClick={this.goToUserDetail}>Detail</button>
+                          <br />
                           <button className="btn btn-info" onClick={this.logOut}>Logout</button>
                         </div>
                       </div>

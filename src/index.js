@@ -15,6 +15,8 @@ import Register from './components/Register';
 import SignIn from './components/SignIn';
 import axios from 'axios';
 
+import UserDetail from "./components/UserDetail";
+
 
 
 const initialState = {};
@@ -44,6 +46,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Switch>
         <Route path="/course/:courseId" exact component={CourseDetail} />
+        <Route path="/user-detail" exact component={UserDetail} />
         <Route path="/register" exact component={Register} />
         <Route path="/sign-in" exact component={SignIn} />
         <Route path="/" exact component={App} />
